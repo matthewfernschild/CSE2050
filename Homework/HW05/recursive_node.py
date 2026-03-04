@@ -3,7 +3,7 @@
 # methods recursively.                                                        #
 ###############################################################################
 class Node:
-    """Reucrsively implementes Linked List functionality"""
+    """Recursively implementes Linked List functionality"""
     def __init__(self, data, link=None):
         """Instantiates a new Node with given data"""
         self.data = data
@@ -22,12 +22,25 @@ class Node:
 
     def get_tail(self):
         """Recursively finds the data stored in the tail of this sublist"""
-    
+        if self.link == None:
+            return self.data
+        return self.link.get_tail()
+
+
     def add_last(self, data):
         """Recursively adds to end of this sublist"""
+        if self.link == None:
+            self.link = Node(data,None)
+        else:
+            return self.link.add_last(data) 
+        
 
     def total(self):
         """Recusrively adds all items"""
+        if self.link == None:
+            return self.data
+        else:
+            return self.data + self.link.total()
     
     def remove_last(self):
         """Recursively removes last item in sublist
@@ -43,6 +56,20 @@ class Node:
                 * tail_data: Any
                     The data that was found in the tail node
         """
+        if self.link is None:
+            return (None, self.data)
 
+        new_link, tail_data = self.link.remove_last()
+        self.link = new_link
+
+        return (self, tail_data)
+    
     def reverse(self, prev):
         """Recursively reverse list"""
+        if self.link is None:
+            self.link = prev
+            return self
+
+        nxt = self.link    
+        self.link = prev     
+        return nxt.reverse(self)
