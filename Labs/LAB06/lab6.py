@@ -74,11 +74,25 @@ class OrderedList:
     # TODO: Implement a true O(logn) binary search #
     ################################################
         
-    def _bs(self, ???):
+    def _bs(self, item, left, right):
         """searches for item using `left` and `right` indices instead of slicing"""
-        # base case - item not in list
+        right -= 1
 
+        if left > right:
+            return False
+        
+        midpoint = (left+right)//2
+
+        if self._L[midpoint] == item:
+            return True
+        elif item < self._L[midpoint]:
+            return self._bs(item, left, midpoint)
+        else:
+            return self._bs(item, midpoint + 1, right + 1)
+        # base case - item not in list
+        
         # base case: found item
+        
 
         # item is in smaller half
         
