@@ -11,10 +11,19 @@ class MagicCase(Enum):
     REVERSE_SORTED = 3
 
 def linear_scan(L):
-    pass
+    num = 0
+    for i in L:
+        if (L[i]>L[i+1]):
+           num += 1 
+    return num
 
 def reverse_list(L, alg_set=None):
-    pass
+    num = 0
+    for i in L:
+        if (L[i]>L[i+1]):
+           num += 1 
+    return num
+    
 
 def magic_insertionsort(L, left, right, alg_set=None):
     pass
