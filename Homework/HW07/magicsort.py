@@ -26,7 +26,10 @@ def linear_scan(L):
 
 def reverse_list(L, alg_set=None):
     L[:] = L[::-1]
-    alg_set.add("magic_insertionsort")
+    if alg_set is not None:
+        alg_set.add("reverse_list")
+    else:
+        alg_set = set("reverse_list")
     return L
 
 def magic_insertionsort(L, left, right, alg_set=None):
@@ -35,23 +38,28 @@ def magic_insertionsort(L, left, right, alg_set=None):
         while curr > left and L[curr] < L[curr - 1]:
             L[curr], L[curr - 1] = L[curr - 1], L[curr]
             curr -= 1
-    alg_set.add("magic_insertionsort")
+    if alg_set is not None:
+        alg_set.add("magic_insertionsort")
+    else:
+        alg_set = {"magic_insertionsort"}
     return L
 
 def magic_mergesort(L, left, right, alg_set=None):
-    if left >= right:
+    if right - left <= 1:
         return L
+    if right - left <= 20:
+        return magic_insertionsort(L, left, right, alg_set)
 
     mid = (left + right) // 2
 
-    magic_mergesort(L, left, mid)
-    magic_mergesort(L, mid + 1, right)
+    magic_mergesort(L, left, mid, alg_set)
+    magic_mergesort(L, mid, right, alg_set)
 
     temp = []
     i = left
-    j = mid + 1
+    j = mid 
 
-    while i <= mid and j <= right:
+    while i < mid and j < right:
         if L[i] <= L[j]:
             temp.append(L[i])
             i += 1
@@ -59,32 +67,38 @@ def magic_mergesort(L, left, right, alg_set=None):
             temp.append(L[j])
             j += 1
 
-    while i <= mid:
+    while i < mid:
         temp.append(L[i])
         i += 1
 
-    while j <= right:
+    while j < right:
         temp.append(L[j])
         j += 1
 
     for k in range(len(temp)):
         L[left + k] = temp[k]
-    alg_set.add("magic_mergesort")
-    return
 
-def magic_quicksort(L, left, right, depth=0):
+
+    if alg_set is not None:
+        alg_set.add("magic_mergesort")
+    else:
+        alg_set = {"magic_mergesort"}
+
+    return L
+
+def magic_quicksort(L, left, right, depth=0,alg_set=None):
     size = right - left
 
     if size <= 1:
-        return
+        return L
 
     if size <= 20:
-        magic_insertionsort(L, left, right)
-        return
+        magic_insertionsort(L, left, right,alg_set)
+        return L
 
     if depth > 3 * (math.log2(len(L)) + 1):
-        magic_mergesort(L, left, right)
-        return
+        magic_mergesort(L, left, right,alg_set)
+        return L
     
     pivot_index = right - 1
     pivot_value = L[pivot_index]
@@ -97,9 +111,12 @@ def magic_quicksort(L, left, right, depth=0):
 
     L[i], L[pivot_index] = L[pivot_index], L[i]
 
-    magic_quicksort(L, left, i, depth + 1)
-    magic_quicksort(L, i + 1, right, depth + 1)
-
+    magic_quicksort(L, left, i, depth + 1,alg_set)
+    magic_quicksort(L, i + 1, right, depth + 1,alg_set)
+    if alg_set is not None:
+        alg_set.add("magic_quicksort")
+    else:
+        alg_set = {"magic_quicksort"}
     return L
 
 def magicsort(L):
@@ -109,16 +126,18 @@ def magicsort(L):
     if case == MagicCase.SORTED:
         return alg_set
     
-    if case == MagicCase.REVERSE_SORTED:
+    elif case == MagicCase.REVERSE_SORTED:
         alg_set.add("reverse_list")
-        reverse_list(L)
+        reverse_list(L,alg_set)
         return alg_set
     
-    if case == MagicCase.CONSTANT_INVERSIONS:
+    elif case == MagicCase.CONSTANT_INVERSIONS:
         alg_set.add("magic_insertionsort")
-        magic_insertionsort(L,0,len(L))
+        magic_insertionsort(L,0,len(L),alg_set)
         return alg_set
     
-    alg_set.add("magic_quicksort")
-    magic_quicksort(L,0,len(L))
+    else:
+        magic_quicksort(L,0,len(L),0,alg_set)
+        alg_set.add("magic_quicksort")
+
     return alg_set
