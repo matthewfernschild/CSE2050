@@ -1,44 +1,11 @@
-CSE 2050 Repository
+# CSE 2050: Data Structures & Algorithms (OOP-Focus)
+## Course Overview
+This repository contains my work for CSE 2050: Data Structures and Object-Oriented Design.
 
-This repository contains my work for CSE 2050: Data Structures and Object-Oriented Design, my Data Structures and Algorithms class at the University of Connecticut. The course introduces fundamental data structures, algorithms, object-oriented programming, recursion, and algorithmic problem solving in Python.
+Introduction to fundamental data structures and algorithms. The emphasis is on understanding how to efficiently implement different data structures, communicate clearly about design decisions, and understand the relationships among implementations, design decisions, and the four pillars of object-oriented programming: abstraction, encapsulation, inheritance, and polymorphism.
+- * https://catalog.uconn.edu/undergraduate/courses/cse/ *
 
-Course Overview
-CSE 2050 is a course on Data Structures and Algorithms with a focus on Object Oriented Programming (OOP)
-
-Through this course, I worked on:
-
-Python programming with functions, imports, and object-oriented design
-Time complexity and running time analysis
-Linear data structures
-Recursion and dynamic programming
-Searching and sorting
-Divide and conquer
-Mapping and hashing
-Trees
-Priority queues and heaps
-Graphs
-
-Course Goals:
-Write Python programs using functions, imports, and OOP
-Compare data structures and algorithms using time complexity
-Choose appropriate structures for a given problem
-Implement abstract data types such as stacks, queues, deques, mappings, and priority queues
-Use structures such as lists, linked lists, doubly linked lists, heaps, trees, and graphs
-Solve problems using recursion
-Repository Contents
-
-Grading:
-
-Participation: 5%
-Practice Exercises: 5%
-Quizzes: 7%
-Labs: 15%
-Homework Assignments: 20%
-Exams: 48%
-Extra Credit Mini Quizzes: 3%
-
-Topics:
-
+### Topics:
 Python Basics (Python Review)
 OOP and Testing
 Running Time Analysis
@@ -50,5 +17,16 @@ Mapping and Hashing
 Trees
 Priority Queues and Heaps
 Graphs
+
+### Grading:
+
+Participation: 5%
+Practice Exercises: 5%
+Quizzes: 7%
+Labs: 15%
+Homework Assignments: 20%
+Exams: 48%
+Extra Credit Mini Quizzes: 3%
+
 
 Disclaimer: This repository is intended to document my coursework and learning progress in CSE 2050. It is not meant to be used by other students for copying or submitting coursework.
