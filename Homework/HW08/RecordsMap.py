@@ -3,13 +3,38 @@
 # Start with unittests
 
 class LocalRecord:
-    def __init__(self, pos, max=None, min=None, precision = 0): pass
+    def __init__(self, pos, max=None, min=None, precision = 0): 
+        '''Initializes the record with pos, max, min, and precision'''
+        self.pos = pos
+        self.max = max
+        self.min = min
+        self.precision = precision
 
-    def add_report(self, temp): pass
+    def add_report(self, temp): 
+        '''add_report: Checks if temp is greater than max or less than min, updates the value if so.'''
+        if self.max == None:
+            self.max = temp
+        if self.min == None:
+            self.min = temp
 
-    def __eq__(self, other): pass
+        if temp > self.max:
+            self.max = temp
+        if temp < self.min:
+            self.min = temp
 
-    def __hash__(self): pass
+
+    def __eq__(self, other): 
+        '''__eq__: Check self.pos & other rounded (in affect, if 2 positions are within 70mi radius). Returns boolean value.'''
+        p0 = round(self.pos[0])
+        p1 = round(self.pos[1])
+
+        if p0 == round(other[0]) and p1 == (other[1]):
+            return True
+        return False
+        
+    def __hash__(self): 
+        '''Returns a hash for the object based on its position'''
+        return hash(self.pos)
 
     def __repr__(self):
         return f"Record(pos={self.pos}, max={self.max}, min={self.min}"
