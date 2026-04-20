@@ -40,9 +40,13 @@ class LocalRecord:
         return f"Record(pos={self.pos}, max={self.max}, min={self.min}"
 
 class RecordsMap:
-    def __init__(self): pass
-
-    def __len__(self): pass
+    def __init__(self): 
+        self._len = 0
+        self.min = 0
+        self.max = 0
+    
+    def __len__(self): 
+        return self._len
 
     def add_report(self, pos, temp): pass
 
