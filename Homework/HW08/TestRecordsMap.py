@@ -58,7 +58,7 @@ class TestRecordsMap(unittest.TestCase):
         self.test1.add_report((1,1), 100) # add_report
         self.assertEqual(self.test1._len, 1) # len p2
         self.assertEqual(self.record1 in self.test1, True) # contains p2
-        self.assertEqual(self.test1[(1,1)],(100,100))
+        self.assertEqual(self.test1[(1,1)], (100, 100))
         
     def test_add_many_reports(self):
         """Tests multiple add_report methods using the get, len, and contains methods"""
