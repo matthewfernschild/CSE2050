@@ -50,7 +50,7 @@ class DictionaryBST:
             word (str): The word to search for.
         
         Returns:
-            str: The meaning of the word if found, else return None'
+            str: The meaning of the word if found, else return None
         """
         current = self.root
         while current is not None:
@@ -76,7 +76,7 @@ class DictionaryBST:
 
     # Feel free to implement other helper and private methods
     def _insert(self, node, word, meaning):
-        # Standard BST insert
+        """Insert a word into the subtree and rebalance it if needed."""
         if node is None:
             return Node(word, meaning)
 
@@ -117,22 +117,26 @@ class DictionaryBST:
         return node
     
     def _in_order(self, node, result):
+        """Traverse the subtree in order and append entries to result."""
         if node is not None:
             self._in_order(node.left, result)
             result.append((node.word, node.meaning))
             self._in_order(node.right, result)
 
     def _get_height(self, node):
+        """Return the height of a node."""
         if node is None:
             return 0
         return node.height
 
     def _get_balance(self, node):
+        """Return the balance factor of a node."""
         if node is None:
             return 0
         return self._get_height(node.left) - self._get_height(node.right)
 
     def _rotate_left(self, z):
+        """Rotate the subtree left and return the new root."""
         y = z.right
         t2 = y.left
 
@@ -147,6 +151,7 @@ class DictionaryBST:
         return y
 
     def _rotate_right(self, z):
+        """Rotate the subtree right and return the new root."""
         y = z.left
         t3 = y.right
 
