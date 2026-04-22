@@ -1,5 +1,9 @@
 # This file empty on purpose - add the correct classes/methods below
 class Entry():
+    '''Entry
+    - Works virtually the same as a node
+    - Used to add items & priorities to Priority Queues
+    '''
     def __init__(self, item, priority):
         self.item = item
         self.priority = priority
@@ -11,6 +15,7 @@ class Entry():
         return self.item == other.item and self.priority == other.priority
     
 class PQ_UL():
+    '''Sorted Priority Queue'''
     def __init__(self):
         self._entries = []
     
@@ -29,6 +34,9 @@ class PQ_UL():
         return e
 
 class PQ_OL():
+    '''Sorted Priority Queue
+    - Sorts after each entry
+    '''
     def __init__(self):
         self._entries = []
     
